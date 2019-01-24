@@ -1,0 +1,25 @@
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		// INGRESAR DATOS
+		Console.WriteLine("Ingrese T y a");
+		double T = double.Parse(Console.ReadLine());
+		double a = double.Parse(Console.ReadLine());
+		
+		//HALLAR Z, Y
+		double Z = T * ((Math.Cos(a * (Math.PI / 180))));
+		double Y = T * ((Math.Sin(a * (Math.PI / 180))));
+		
+		//HALLAR b
+		double c = 180 - (90 + a);
+		
+		//IMPRIMIR RESULTADOS
+		
+		Console.WriteLine(Z);
+		Console.WriteLine(Y);
+		Console.WriteLine(c);
+	}
+}

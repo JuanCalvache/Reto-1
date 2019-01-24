@@ -1,0 +1,24 @@
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		// INGRESAR DATOS
+		Console.WriteLine("Ingrese Z y Y");
+		double Z = double.Parse(Console.ReadLine());
+		double Y = double.Parse(Console.ReadLine());
+		
+		// HALLAR T
+		double T = Math.Sqrt((Z*Z) + (Y*Y));
+		
+		//HALLAR a Y c
+		double a = (Math.Atan(Z / Y))*(180 / Math.PI);
+		double c = (Math.Atan(Y / Z))*(180 / Math.PI);
+		
+		// IMPRIMIR RESULTADO
+		Console.WriteLine(T);
+		Console.WriteLine(a);
+		Console.WriteLine(c);
+	}
+}

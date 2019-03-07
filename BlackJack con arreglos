@@ -1,0 +1,67 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        int n = 11, total1 = 0, total2 = 0;
+        string respuesta = "s";
+        int [] jugador1 = new int[n];
+        int [] jugador2 = new int[n];
+        Random aleatorio = new Random();
+
+        Console.WriteLine("Bienvenido Jugagor 1");
+        for (int i = 0; total1 < 21 && respuesta == "s"; i += 1)
+        {
+            jugador1[i] = aleatorio.Next(1, 11);
+            total1 += jugador1[i];
+            Console.WriteLine("Carta: " + jugador1[i]);
+            Console.WriteLine("Total: " + total1);
+            if (total1 < 21)
+            {
+                Console.WriteLine("¿Desea continuar?(s/n)");
+                respuesta = Console.ReadLine();
+            }
+            else if (total1 == 21)
+            {
+                Console.WriteLine("Ganaste");
+                break;
+            }
+            else if (total1 > 21)
+            {
+                total1 = 0;
+                Console.WriteLine("Total: " + total1);
+                Console.WriteLine("Perdiste");
+                break;
+            }
+        }
+
+        Console.WriteLine("Bienvenido Jugagor 2");
+        for (int i = 0; total2 < 21 && respuesta == "s"; i += 1)
+        {
+            jugador2[i] = aleatorio.Next(1, 11);
+            total2 += jugador2[i];
+            Console.WriteLine("Carta: " + jugador2[i]);
+            Console.WriteLine("Total: " + total2);
+            if (total2 < 21)
+            {
+                Console.WriteLine("¿Desea continuar?(s/n)");
+                respuesta = Console.ReadLine();
+            }
+            else if (total2 == 21)
+            {
+                Console.WriteLine("Ganaste");
+                break;
+            }
+            else if (total2 > 21)
+            {
+                total2 = 0;
+                Console.WriteLine("Total: " + total2);
+                Console.WriteLine("Perdiste");
+                break;
+            }
+        }
+
+        Console.WriteLine("Fin Del Juego");
+    }
+}

@@ -61,7 +61,13 @@ public class Program
                 break;
             }
         }
-
+        if(total1 < total2){
+            Console.WriteLine("El Ganador es el Jugador 2");
+            } else if (total1 > total 2){
+            Console.WriteLine("El Ganador es el Jugador 1");
+            } else if (total1 == total2){
+            Console.WriteLine("Empate");
+            }
         Console.WriteLine("Fin Del Juego");
     }
 }

@@ -1,0 +1,78 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        Random aleatorio = new Random();
+        int total = 0;
+        int carta1 = 0;
+        int carta2 = 0;
+        Console.WriteLine("Ingresar Numero de Jugadores");
+        int n = int.Parse(Console.ReadLine());
+        string[] nombres = new string[n];
+        int[] puntajes = new int[n];
+
+        for(int i = 0; i < nombres.Length; i += 1)
+        {
+            Console.WriteLine("Ingresar nombre jugador" + (i + 1));
+            nombres[i] = Console.ReadLine();
+            carta1 = aleatorio.Next(1, 11);
+            carta2 = 0;
+            total = carta1 + carta2;
+            string respuesta = "s";
+            Console.WriteLine("Carta: " + carta1);
+
+            while (total < 21 && respuesta == "s")
+            {
+                carta2 = aleatorio.Next(1, 11);
+                Console.WriteLine("Carta: " + carta2);
+                total += carta2;
+                Console.WriteLine("Total: " + total);
+                if (total == 21)
+                {
+                    Console.WriteLine("Has Ganado");
+                    puntajes[i] = total;
+                    break;
+                }
+                else if (total > 21)
+                {
+                    Console.WriteLine("Has perdido");
+                    total = 0;
+                    puntajes[i] = total;
+                    Console.WriteLine("Total = " + total);
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("¿Desea continuar? (s/n):");
+                    respuesta = Console.ReadLine();
+                }
+
+                puntajes[i] = total;
+            }
+        }
+
+        for (int j = 0; j < puntajes.Length-1; j += 1)
+        {
+            for (int i = 0; i < puntajes.Length-1; i += 1)
+            {
+                if (puntajes[i] < puntajes[i + 1])
+                {
+                    int p = puntajes[i];
+                    puntajes[i] = puntajes[i + 1];
+                    puntajes[i + 1] = p;
+                    string tmp = nombres[i + 1];
+                    nombres[i + 1] = nombres[i];
+                    nombres[i] = tmp;
+                }
+            }
+        }
+        for (int i = 0; i < puntajes.Length; i += 1)
+        {
+            Console.WriteLine("Puntajes");
+            Console.WriteLine("Jugador: " + nombres[i] + "Puntaje = " + puntajes[i]);
+        }
+            Console.WriteLine("Fin Del Juego");
+    }
+}

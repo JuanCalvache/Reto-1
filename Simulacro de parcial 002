@@ -1,0 +1,158 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+class Parcial {
+
+    string[] names;
+    double[] data;
+    public static int codigo = 1; // 0 Primer simulacro. 1 Segundo simulacro
+
+    public Parcial(string[] _names, double[] _data) {
+        data = new double[_data.Length];
+        _data.CopyTo(data, 0);
+        names = new string[_names.Length];
+        _names.CopyTo(names, 0);
+    }
+
+
+    public int PrimerPunto() {
+        string[] nombres = new string[names.Length]; names.CopyTo(nombres, 0);
+        double[] notas = new double[data.Length]; data.CopyTo(notas, 0);
+
+        int salida = 0 ;
+        //--------------------------------------------
+        //- Abajo de esta línea va su código ---------
+
+
+        double a = 0;
+        for (int i = 0; i < notas.Length; i += 1)
+        {
+            a += notas[i];
+        }
+        double promedio = (a / notas.Length);
+        for (int i = 0; i < notas.Length; i += 1)
+        {
+            if(notas[i] <= promedio)
+            {
+                salida += 1;
+            }
+        }
+
+        //- Arriba de esta línea va su código --------
+        return salida;
+    }
+
+    public string[] SegundoPunto() {
+        string[] nombres = new string[names.Length]; names.CopyTo(nombres, 0);
+        double[] notas = new double[data.Length]; data.CopyTo(notas, 0);
+
+        string[] salida = new string[5];
+        //--------------------------------------------
+        //- Abajo de esta línea va su código ---------
+
+        double a = 0;
+        for (int i = 0; i < notas.Length; i += 1)
+        {
+            a += notas[i];
+        }
+        double promedio = (a / notas.Length);
+        for (int i = 0; i < notas.Length - 1; i += 1)
+        {
+            for (int j = 0; j < notas.Length - 1; j += 1)
+            {
+                if(Math.Abs(notas[j] - promedio) > Math.Abs(notas[j + 1] - promedio))
+                {
+                    double p = notas[j];
+                    notas[j] = notas[j + 1];
+                    notas[j + 1] = p;
+                    string tmp = nombres[j + 1];
+                    nombres[j + 1] = nombres[j];
+                    nombres[j] = tmp;
+                }
+            }
+        }
+        for (int i = 0; i < salida.Length; i += 1)
+        {
+            salida[i] = nombres[i];
+        }
+        
+            //- Arriba de esta línea va su código --------
+            return salida;
+    }
+
+    public string[] TercerPunto() {
+        string[] nombres = new string[names.Length]; names.CopyTo(nombres, 0);
+        double[] notas = new double[data.Length]; data.CopyTo(notas, 0);
+
+        string[] salida = new string[0];
+        //--------------------------------------------
+        //- Abajo de esta línea va su código ---------
+
+        double a = 0;
+        int cont = 0;
+        for (int i = 0; i < notas.Length; i += 1)
+        {
+            a += notas[i];
+        }
+        double promedio = (a / notas.Length);
+        for (int i = 0; i < notas.Length; i += 1)
+        {
+            if (notas[i] >= promedio)
+            {
+                cont += 1;
+            }
+        }
+        salida = new string[cont];
+        cont = 0;
+        for (int i = 0; i < notas.Length; i += 1)
+        {
+            if (notas[i] >= promedio)
+            {
+                salida[cont] = nombres[i];
+                cont += 1;
+            }
+        }
+
+        //- Arriba de esta línea va su código --------
+        return salida;
+    }
+
+    public string[] CuartoPunto() {
+        string[] nombres = new string[names.Length]; names.CopyTo(nombres, 0);
+        double[] notas = new double[data.Length]; data.CopyTo(notas, 0);
+
+        string[] salida = new string[0];
+        //--------------------------------------------
+        //- Abajo de esta línea va su código ---------
+
+        int cont = 0;
+        for (int i = 0; i < nombres.Length - 1; i += 1)
+        {
+            string N = nombres[i];
+            N = N.ToUpper();
+            char A = 'A', E = 'E', I = 'I', O = 'O', U = 'U'; 
+            if (N[0] == A || N[0] == E || N[0] == I || N[0] == O || N[0] == U)
+            {
+                cont += 1;
+            }
+        }
+        salida = new string[cont];
+        cont = 0;
+        for (int i = 0; i < nombres.Length - 1; i += 1)
+        {
+            string N = nombres[i];
+            N = N.ToUpper();
+            char A = 'A', E = 'E', I = 'I', O = 'O', U = 'U';
+            if (N[0] == A || N[0] == E || N[0] == I || N[0] == O || N[0] == U)
+            {
+                salida[cont] = N;
+                cont += 1;
+            }
+        }
+
+        //- Arriba de esta línea va su código --------
+        return salida;
+    }
+}

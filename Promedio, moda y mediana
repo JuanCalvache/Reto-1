@@ -20,6 +20,17 @@ namespace ConsoleApp2
             }
             //--------------------------------------
 
+            //Hallar Promedio
+            //--------------------------------------
+            int total = 0;
+            for (int i = 0; i < datos.Length; i += 1) //Sumar los datos del numerador
+            {
+                total += datos[i];
+            }
+            double promedio = (double)(total) / (double)(datos.Length); //Dividir la suma de los datos entre el numero de datos
+            Console.WriteLine("El Promedio es: " + promedio); //Escribir el promedio
+            //--------------------------------------
+
             //Hallar Moda
             //--------------------------------------
             for (int j = 0; j < datos.Length - 1; j += 1) //Organizar Datos de mayor a menor
@@ -97,6 +108,28 @@ namespace ConsoleApp2
             }
             Console.WriteLine("La moda es " + DatosSinRepetir[0] + " y se repite " + Repeticiones[0] + " veces en los datos"); //Escribir el dato que se repite mas y el numero de veces que se repite
             //--------------------------------------
+
+            //Hallar Mediana
+            //--------------------------------------
+            for (int i = 0; i < datos.Length; i++)
+            {
+                Console.WriteLine(datos[i]);
+            }
+            if (datos.Length % 2 == 0) //Hallar el dato de la mitad si el numero de datos es par
+            {
+                Console.WriteLine("la mediana es ");
+                int b = ((datos.Length) / 2);
+                double c = ((datos[b - 1] + datos[b]) / 2);
+                Console.WriteLine(c);
+            }
+            else //Hallar el dato de la mitad si el numeo es impar
+            {
+                Console.WriteLine("la mediana es ");
+                int a = ((datos.Length + 1) / 2);
+                Console.WriteLine(datos[a - 1]);
+            }
+            //--------------------------------------
+
         }
     }
 }

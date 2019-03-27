@@ -34,22 +34,22 @@ namespace ConsoleApp2
                     }
                 }
             }
-            Console.WriteLine("Datos Organizados:");
+            Console.WriteLine("Datos Organizados:"); //Escribir Dayos organizados
             for (int i = 0; i < datos.Length; i += 1)
             {
                 Console.WriteLine(datos[i]);
             }
-            for (int i = 0; i < datos.Length - 1; i += 1)
+            for (int i = 0; i < datos.Length - 1; i += 1) //Contar numero de Datos sin Repetir
             {
                 if (datos[i] != datos[i + 1])
                 {
                         cont += 1;
                 }
             }
-            int[] DatosSinRepetir = new int[cont];
+            int[] DatosSinRepetir = new int[cont]; //Declarar Arreglos para guardar los datos sin repetir y el numero de repeticiones por dato
             int[] Repeticiones = new int[cont];
             cont = 0;
-            for (int i = 0; i < datos.Length - 1; i += 1)
+            for (int i = 0; i < datos.Length - 1; i += 1) //Guardar los datos sin repetir en el arreglo
             {
                 if (datos[i] != datos[i + 1])
                 {
@@ -58,12 +58,12 @@ namespace ConsoleApp2
                     cont += 1;
                 }
             }
-            Console.WriteLine("Datos Sin Repetir:");
+            Console.WriteLine("Datos Sin Repetir:"); //Escribir datos sin Repetir
             for (int i = 0; i < DatosSinRepetir.Length; i += 1)
             {
                 Console.WriteLine(DatosSinRepetir[i]);
             }
-            for (int i = 0; i < DatosSinRepetir.Length; i += 1)
+            for (int i = 0; i < DatosSinRepetir.Length; i += 1) //Guardar numero de Repeticiones en el arreglo
             {
                 cont = 0;
                 for (int j = 0; j < datos.Length; j += 1)
@@ -75,24 +75,28 @@ namespace ConsoleApp2
                 }
                 Repeticiones[i] = cont;
             }
-            Console.WriteLine("Numero de Repeticiones:");
+            Console.WriteLine("Numero de Repeticiones:"); //Escribir numero de Repeticiones
             for (int i = 0; i < Repeticiones.Length; i += 1)
             {
                 Console.WriteLine(Repeticiones[i]);
             }
-            int mayorRep = 0;
-            int mayor = 0;
-            for (int i = 0; i < Repeticiones.Length - 1; i += 1)
+            for (int i = 0; i < Repeticiones.Length - 1; i += 1) //organizar las repeticiones de mayor a menor y sus respectivos datos (Si una repeticion cambai de lugar el dato al cual corresponde tambien)
             {
-                mayorRep = Repeticiones[i];
-                mayor = DatosSinRepetir[i];
-                if (Repeticiones[i] < Repeticiones[i + 1])
+                for(int j = 0; j < Repeticiones.Length - 1; j += 1)
                 {
-                    mayorRep = Repeticiones[i + 1];
-                    mayor = DatosSinRepetir[i + 1];
+                    if(Repeticiones[i] < Repeticiones[i + 1])
+                    {
+                        int tmp = Repeticiones[i];
+                        Repeticiones[i] = Repeticiones[i + 1];
+                        Repeticiones[i + 1] = tmp;
+                        tmp = DatosSinRepetir[i];
+                        DatosSinRepetir[i] = DatosSinRepetir[i + 1];
+                        DatosSinRepetir[i + 1] = tmp;
+                    }
                 }
             }
-            Console.WriteLine("El numero que se repite mas veces es " + mayor + " y se repite " + mayorRep + " veces");
+            Console.WriteLine("La moda es " + DatosSinRepetir[0] + " y se repite " + Repeticiones[0] + " veces en los datos"); //Escribir el dato que se repite mas y el numero de veces que se repite
+            //--------------------------------------
         }
     }
 }
